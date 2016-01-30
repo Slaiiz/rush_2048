@@ -18,6 +18,11 @@
 # include "libft.h"
 
 /*
+** Manual makes no mention of this key that I know.
+*/
+# define KEY_ESC	27
+
+/*
 ** Highscores window's proportional scale
 */
 # define WINA_X	(COLS / 10 * 3)

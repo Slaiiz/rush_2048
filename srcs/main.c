@@ -55,7 +55,7 @@ int			main(void)
 	{
 		if (key == KEY_RESIZE)
 			setup_windows(&highscores, &gamewindow, &score);
-		else if (key == KEY_EXIT)
+		else if (key == KEY_ESC)
 			break ;
 	}
 	endwin();
