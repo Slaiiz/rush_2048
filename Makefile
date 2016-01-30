@@ -1,5 +1,5 @@
 CC		= gcc
-#CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 NAME	= game_2048
 SRCS	= main.c gui.c game.c
 

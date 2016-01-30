@@ -50,8 +50,25 @@ enum	e_const
 	WIN_VALUE = 2048
 };
 
+enum	e_display
+{
+	STDSCR = 0,
+	HIGHSCORES = 1,
+	GAMEWINDOW = 2,
+	SCORE = 3
+};
+
+typedef struct	s_context
+{
+	int			is_running;
+	int			points;
+	WINDOW		*windows[3];
+}				t_context;
+
+
+void	step_game(t_context *gamestate, int key);
 void	update_score(WINDOW *c, int points);
-void	setup_text(WINDOW *a, WINDOW *b, WINDOW *c);
-int		setup_windows(WINDOW **a, WINDOW **b, WINDOW **c);
+void	setup_text(WINDOW **windows);
+int		setup_windows(WINDOW **windows);
 
 #endif

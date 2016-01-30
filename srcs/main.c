@@ -12,24 +12,35 @@
 
 #include "game_2048.h"
 
+/*
+** Initialize the three windows.
+** Allocate and initialize room for the game's state.
+** Exit on failure. Otherwise you're good to go.
+** Process each keystroke according to the program's needs,
+** if it's no interest then feed it to the game procedure
+** to do stuff with it.
+*/
 int			main(void)
 {
-	WINDOW	*highscores;
-	WINDOW	*gamewindow;
-	WINDOW	*score;
-	int		key;
+	t_context	*gamestate;
+	int			key;
 
-	if (setup_windows(&highscores, &gamewindow, &score))
+	if ((gamestate = ft_memalloc(sizeof(t_context))))
 	{
-		while ((key = getch()))
+		if (setup_windows(gamestate->windows))
 		{
-			if (key == KEY_RESIZE)
-				setup_windows(&highscores, &gamewindow, &score);
-			else if (key == KEY_ESC)
-				break ;
+			while ((key = getch()))
+			{
+				if (key == KEY_RESIZE)
+					setup_windows(gamestate->windows);
+				else if (key == KEY_ESC)
+					break ;
+				else
+					step_game(gamestate, key);
+			}
+			endwin();
+			return (1);
 		}
-		endwin();
-		return (1);
 	}
 	return (0);
 }

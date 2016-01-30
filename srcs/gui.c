@@ -12,50 +12,63 @@
 
 #include "game_2048.h"
 
-void	setup_text(WINDOW *a, WINDOW *b, WINDOW *c)
+/*
+** Write all the fancy text on your surfaces.
+** @param WINDOW **windows	- An array of windows
+*/
+void	setup_text(WINDOW **windows)
 {
+	WINDOW	*window;
 	int		repeat;
 	char	*s;
 
+	window = windows[HIGHSCORES];
 	s = "~ 2048 ~";
-	mvwaddstr(a, 2, CENTER(WINA_X, ft_strlen(s)), s);
+	mvwaddstr(window, 2, CENTER(WINA_X, ft_strlen(s)), s);
 	repeat = WINA_X - 2;
-	wmove(a, 4, 1);
+	wmove(window, 4, 1);
 	while (repeat--)
-		waddch(a, '=');
+	waddch(window, '=');
 	s = "highscores";
-	mvwaddstr(a, 6, CENTER(WINA_X, ft_strlen(s)), s);
-	update_score(c, 0);
+	mvwaddstr(window, 6, CENTER(WINA_X, ft_strlen(s)), s);
+	s = "Press ENTER to start the game";
+	mvwaddstr(window, WINA_Y - 2, CENTER(WINA_X, ft_strlen(s)), s);
+	update_score(windows[SCORE], 0);
 	return ;
 }
 
 /*
+** Draw each window in a way that will cover the entire screen.
+** Can be recalled further for updating.
+** @param WINDOW **windows	- An array of windows
 ** HACK:
-** Line 46: refresh()
+** Line 54: refresh()
 ** Prevents unwanted screen clearing from future calls to getch()
 */
-
-int		setup_windows(WINDOW **a, WINDOW **b, WINDOW **c)
+int		setup_windows(WINDOW **windows)
 {
-	static WINDOW	*stdscr;
+	WINDOW	*window;
 
-	if (stdscr)
-		wresize(stdscr, LINES, COLS);
-	if ((stdscr = initscr()))
+	if ((windows[STDSCR] = initscr()))
 	{
 		refresh();
-		getmaxyx(stdscr, LINES, COLS);
-		*a = newwin(WINA_Y, WINA_X, 0, 0);
-		wborder(*a, '|', '|', '-', '-', '+', '+', '+', '+');
-		*b = newwin(WINB_Y, WINB_X, 0, WINA_X);
-		wborder(*b, '|', '|', '-', '-', '+', '+', '+', '+');
-		*c = newwin(WINC_Y, WINC_X, WINA_Y, 0);
-		wborder(*c, '|', '|', '-', '-', '+', '+', '+', '+');
-		setup_text(*a, *b, *c);
-		wrefresh(*a);
-		wrefresh(*b);
-		wrefresh(*c);
-		raw();
+		getmaxyx(windows[STDSCR], LINES, COLS);
+		window = newwin(WINA_Y, WINA_X, 0, 0);
+		wborder(window, '|', '|', '-', '-', '+', '+', '+', '+');
+		wrefresh(window);
+		windows[HIGHSCORES] = window;
+		window = newwin(WINB_Y, WINB_X, 0, WINA_X);
+		wborder(window, '|', '|', '-', '-', '+', '+', '+', '+');
+		wrefresh(window);
+		windows[GAMEWINDOW] = window;
+		window = newwin(WINC_Y, WINC_X, WINA_Y, 0);
+		wborder(window, '|', '|', '-', '-', '+', '+', '+', '+');
+		wrefresh(window);
+		windows[SCORE] = window;
+		setup_text(windows);
+		keypad(windows[STDSCR], 1);
+		cbreak();
+		noecho();
 		return (1);
 	}
 	return (0);
