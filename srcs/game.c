@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchesnea <vchesnea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,24 +12,13 @@
 
 #include "game_2048.h"
 
-int			main(void)
+void	update_score(WINDOW *c, int points)
 {
-	WINDOW	*highscores;
-	WINDOW	*gamewindow;
-	WINDOW	*score;
-	int		key;
+	char	*s;
 
-	if (setup_windows(&highscores, &gamewindow, &score))
-	{
-		while ((key = getch()))
-		{
-			if (key == KEY_RESIZE)
-				setup_windows(&highscores, &gamewindow, &score);
-			else if (key == KEY_ESC)
-				break ;
-		}
-		endwin();
-		return (1);
-	}
-	return (0);
+	s = "Points:";
+	mvwaddstr(c, CENTER(WINC_Y, 1), 2, s);
+	s = ft_itoa(points);
+	mvwaddstr(c, CENTER(WINC_Y, ft_strlen(s)), WINC_X - ft_strlen(s) - 2, s);
+	free(s);
 }

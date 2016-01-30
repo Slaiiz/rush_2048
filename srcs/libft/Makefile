@@ -14,8 +14,7 @@ SRCS  =	ft_atoi.c        ft_bzero.c    ft_isalnum.c   ft_isalpha.c    ft_isascii
 		ft_strnstr.c     ft_strrchr.c  ft_strsplit.c  ft_strstr.c     ft_strsub.c\
 		ft_strtrim.c     ft_tolower.c  ft_toupper.c   ft_min.c        ft_max.c\
 		ft_itoa_base.c   ft_isblank.c  ft_chrrep.c    ft_strrev.c     ft_rot13.c\
-		ft_putnbr_base.c ft_printmem.c ft_nbrlen.c    ft_realloc.c    ft_arraydel.c\
- 		ft_bitscan.c
+		ft_putnbr_base.c ft_bitscan.c   ft_nbrlen.c    ft_realloc.c    ft_arraydel.c
 OBJS :=	$(subst .c,.o,$(SRCS))
 vpath %.o srcs/
 

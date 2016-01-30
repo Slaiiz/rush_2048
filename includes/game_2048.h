@@ -17,6 +17,8 @@
 # include <menu.h>
 # include "libft.h"
 
+# define CENTER(size, length)	(size - length) / 2
+
 /*
 ** Manual makes no mention of this key that I know.
 */
@@ -47,5 +49,9 @@ enum	e_const
 {
 	WIN_VALUE = 2048
 };
+
+void	update_score(WINDOW *c, int points);
+void	setup_text(WINDOW *a, WINDOW *b, WINDOW *c);
+int		setup_windows(WINDOW **a, WINDOW **b, WINDOW **c);
 
 #endif

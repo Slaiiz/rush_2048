@@ -1,7 +1,7 @@
 CC		= gcc
 #CFLAGS	= -Wall -Wextra -Werror
 NAME	= game_2048
-SRCS	= main.c
+SRCS	= main.c gui.c game.c
 
 help:
 	@echo "\033[33;41mAvailable rules:\033[0m\n\
@@ -15,7 +15,7 @@ help:
 $(NAME):
 		cd srcs;\
 		make -C libft/;\
-		$(CC) $(CFLAGS) -o ../$@ -I ../includes -I libft/includes $(SRCS) -lmenu -lncurses
+		$(CC) $(CFLAGS) -o ../$@ -I ../includes -I libft/includes $(SRCS) libft/libft.a -lmenu -lncurses
 
 all: $(NAME)
 
