@@ -22,33 +22,42 @@
 /*
 ** Manual makes no mention of this key that I know.
 */
+
 # define KEY_ESC	27
 
 /*
 ** Highscores window's proportional scale
 */
+
 # define WINA_X	(COLS / 10 * 3)
 # define WINA_Y	(LINES / 10 * 9)
 
 /*
 ** Gamewindow window's proportional scale
 */
+
 # define WINB_X	(COLS / 10 * 7 + COLS % 10)
 # define WINB_Y (LINES / 10 * 10 + LINES % 10)
 
 /*
 ** Score window's proportional scale
 */
+
 # define WINC_X	(COLS / 10 * 3)
 # define WINC_Y	(LINES / 10 * 1 + LINES % 10)
 
 /*
 ** WIN_VALUE: Victory condition
 */
+
 enum	e_const
 {
 	WIN_VALUE = 2048
 };
+
+/*
+** Enumerators for accessing *windows[]
+*/
 
 enum	e_display
 {
@@ -65,9 +74,9 @@ typedef struct	s_context
 	WINDOW		*windows[3];
 }				t_context;
 
-void	step_game(t_context *gamestate, int key);
-void	update_score(WINDOW *c, int points);
-void	setup_text(WINDOW **windows);
-int		setup_windows(WINDOW **windows);
+void			step_game(t_context *gamestate, int key);
+void			update_score(WINDOW *c, int points);
+void			setup_text(WINDOW **windows);
+int				setup_windows(WINDOW **windows);
 
 #endif

@@ -20,6 +20,7 @@
 ** if it's no interest then feed it to the game procedure
 ** to do stuff with it.
 */
+
 int			main(void)
 {
 	t_context	*gamestate;

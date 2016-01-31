@@ -17,6 +17,7 @@
 ** @param WINDOW *c				- The concerned window handle
 ** @param int points			- Number to be displayed
 */
+
 void	update_score(WINDOW *c, int points)
 {
 	char	*s;
@@ -34,6 +35,7 @@ void	update_score(WINDOW *c, int points)
 ** @param t_context gamestate	- A structure containing the state of the game.
 ** @param int key				- A keystroke
 */
+
 void	step_game(t_context *gamestate, int key)
 {
 	if (!gamestate->is_running)

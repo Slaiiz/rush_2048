@@ -16,6 +16,7 @@
 ** Write all the fancy text on your surfaces.
 ** @param WINDOW **windows	- An array of windows
 */
+
 void	setup_text(WINDOW **windows)
 {
 	WINDOW	*window;
@@ -24,11 +25,11 @@ void	setup_text(WINDOW **windows)
 
 	window = windows[HIGHSCORES];
 	s = "~ 2048 ~";
-	mvwaddstr(window, 2, CENTER(WINA_X, ft_strlen(s)), s);
+	mvwaddstr(window, 2, 2, s);
 	repeat = WINA_X - 2;
 	wmove(window, 4, 1);
 	while (repeat--)
-	waddch(window, '=');
+		waddch(window, '=');
 	s = "highscores";
 	mvwaddstr(window, 6, CENTER(WINA_X, ft_strlen(s)), s);
 	s = "Press ENTER to start the game";
@@ -42,9 +43,10 @@ void	setup_text(WINDOW **windows)
 ** Can be recalled further for updating.
 ** @param WINDOW **windows	- An array of windows
 ** HACK:
-** Line 54: refresh()
+** Line 56: refresh()
 ** Prevents unwanted screen clearing from future calls to getch()
 */
+
 int		setup_windows(WINDOW **windows)
 {
 	WINDOW	*window;
