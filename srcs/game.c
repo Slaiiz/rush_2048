@@ -17,6 +17,13 @@ static void	new_game(t_context *gamestate)
 	WINDOW	**windows;
 
 	windows = gamestate->windows;
+	if (ft_bitscan(WIN_VALUE) != 1)
+	{
+		mvwaddstr(windows[SCORE], CENTER(WINC_Y, 1), 2, "I AIN'T RUNNIN' THAT");
+		wrefresh(windows[SCORE]);
+		gamestate->is_running = 0;
+		return ;
+	}
 	gamestate->is_running = 1;
 	mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
 	wrefresh(windows[HIGHSCORES]);
@@ -25,10 +32,6 @@ static void	new_game(t_context *gamestate)
 	addnum(gamestate);
 	addnum(gamestate);
 	draw_grid(gamestate);
-	fill_slot(gamestate->windows[GAMEWINDOW], 0, 32);
-	fill_slot(gamestate->windows[GAMEWINDOW], 5, 32);
-	fill_slot(gamestate->windows[GAMEWINDOW], 10, 32);
-	fill_slot(gamestate->windows[GAMEWINDOW], 15, 32);
 }
 
 static int	get_input(t_context *gamestate, int key)
@@ -75,6 +78,7 @@ void		update_score(t_context *gamestate)
 
 void		step_game(t_context *gamestate, int key)
 {
+	WINDOW	*window;
 	int		condition;
 
 	if (!gamestate->is_running)
@@ -87,8 +91,14 @@ void		step_game(t_context *gamestate, int key)
 		if ((condition = get_input(gamestate, key)) != -1)
 		{
 			update_grid(gamestate);
+			update_score(gamestate);
 			if (condition != 0)
+			{
+				window = gamestate->windows[HIGHSCORES];
+				mvwaddstr(window, 8, 2, "Ye lost LOSAR!");
 				gamestate->is_running = 0;
+				free(gamestate->grid);
+			}
 		}
 	}
 }
