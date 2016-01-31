@@ -1,7 +1,8 @@
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME	= game_2048
-SRCS	= main.c gui.c game.c
+SRCS	= main.c gui.c game.c\
+		  addnum.c collide.c gameover.c gamestate.c grid.c merge.c move.c
 
 help:
 	@echo "\033[33;41mAvailable rules:\033[0m\n\
@@ -13,19 +14,19 @@ help:
 	\033[30;43mrenolibft\033[0m\n"
 
 $(NAME):
-		cd srcs;\
 		make -C libft/;\
-		$(CC) $(CFLAGS) -o ../$@ -I ../includes -I libft/includes $(SRCS) libft/libft.a -lmenu -lncurses
+		cd srcs;\
+		$(CC) $(CFLAGS) -o ../$@ -I ../includes -I ../libft/includes $(SRCS) ../libft/libft.a -lmenu -lncurses
 
 all: $(NAME)
 
 clean:
-		cd srcs;\
 		make -C libft/ clean;\
+		cd srcs;\
 		rm -f $(subst .c,.o,$(SRCS))
 
 fclean: clean
-		make -C srcs/libft/ fclean;\
+		make -C libft/ fclean;\
 		rm -f $(NAME)
 
 re: fclean all

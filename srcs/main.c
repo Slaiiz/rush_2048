@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchesnea <vchesnea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/00/30 11:16:36 by vchesnea          #+#    #+#             */
-/*   Updated: 2016/00/30 11:16:36 by vchesnea         ###   ########.fr       */
+/*   Created: 2016/01/30 11:16:36 by vchesnea          #+#    #+#             */
+/*   Updated: 2016/01/31 14:39:48 by vchesnea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int			main(void)
 			while ((key = getch()))
 			{
 				if (key == KEY_RESIZE)
+				{
 					setup_windows(gamestate->windows);
+					if (gamestate->is_running)
+						draw_grid(gamestate->windows[GAMEWINDOW]);
+				}
 				else if (key == KEY_ESCAPE)
 					break ;
 				else

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchesnea <vchesnea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/00/30 11:16:36 by vchesnea          #+#    #+#             */
-/*   Updated: 2016/00/30 11:16:36 by vchesnea         ###   ########.fr       */
+/*   Created: 2016/01/30 11:16:36 by vchesnea          #+#    #+#             */
+/*   Updated: 2016/01/31 14:39:58 by vchesnea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@
 ** @param int number		- The number to write in the given slot
 */
 
-//void	fill_slot(WINDOW *c, int slot, int number)
-//{
-//
-//}
+void	fill_slot(t_context *gamestate, int slot, int number)
+{
+	WINDOW	*window;
+	char	*s;
+
+	window = gamestate->windows[GAMEWINDOW];
+	s = ft_itoa(number);
+	wmove(window, WINB_Y * slot)
+}
 
 /*
 ** Draw or update the game's 4x4 grid.
@@ -56,7 +61,7 @@ void	draw_grid(WINDOW *c)
 ** @param WINDOW **windows	- An array of windows
 */
 
-void	setup_text(WINDOW **windows)
+static void	setup_text(WINDOW **windows)
 {
 	WINDOW	*window;
 	int		repeat;
@@ -73,7 +78,6 @@ void	setup_text(WINDOW **windows)
 	mvwaddstr(window, 6, CENTER(WINA_X, ft_strlen(s)), s);
 	s = "Press ENTER to start the game";
 	mvwaddstr(window, WINA_Y - 2, CENTER(WINA_X, ft_strlen(s)), s);
-	update_score(windows[SCORE], 0);
 	wnoutrefresh(window);
 	wnoutrefresh(windows[GAMEWINDOW]);
 	wnoutrefresh(windows[SCORE]);
@@ -84,8 +88,7 @@ void	setup_text(WINDOW **windows)
 ** Draw each window in a way that will cover the entire screen.
 ** Can be recalled further on for updating.
 ** @param WINDOW **windows	- An array of windows
-** HACK:
-** Line 56: refresh()
+** HACK: refresh()
 ** Prevents unwanted screen clearing from future calls to getch()
 */
 
@@ -111,7 +114,6 @@ int		setup_windows(WINDOW **windows)
 		cbreak();
 		noecho();
 		curs_set(0);
-		draw_grid(windows[GAMEWINDOW]);
 		return (1);
 	}
 	return (0);
