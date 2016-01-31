@@ -29,7 +29,7 @@ int		**copy_grid(t_context *gs)
 	int	y;
 
 	original = gs->grid;
-	copy = new_grid(gs);
+	copy = new_grid();
 	x = 0;
 	while (x < 4)
 	{
@@ -44,7 +44,7 @@ int		**copy_grid(t_context *gs)
 	return (copy);
 }
 
-int		**new_grid(t_context *gs)
+int		**new_grid(void)
 {
 	int	**grid;
 	int	x;
@@ -62,8 +62,5 @@ int		**new_grid(t_context *gs)
 			grid[x][y++] = 0;
 		x++;
 	}
-	gs->grid = grid;
-	addnum(gs);
-	addnum(gs);
 	return (grid);
 }

@@ -68,12 +68,10 @@ void		step_game(t_context *gamestate, int key)
 			mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
 			wrefresh(windows[HIGHSCORES]);
 			update_score(gamestate);
-			new_grid(gamestate);
+			gamestate->grid = new_grid();
+			addnum(gamestate);
+			addnum(gamestate);
 			draw_grid(gamestate);
-			fill_slot(gamestate->windows[GAMEWINDOW], 0, 1);
-			fill_slot(gamestate->windows[GAMEWINDOW], 5, 1);
-			fill_slot(gamestate->windows[GAMEWINDOW], 10, 1);
-			fill_slot(gamestate->windows[GAMEWINDOW], 16, 1);
 		}
 	}
 	else

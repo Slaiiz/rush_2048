@@ -83,7 +83,7 @@ int				setup_windows(t_context *gamestate);
 void			update_score(t_context *gamestate);
 void			fill_slot(WINDOW *c, int slot, int number);
 
-int				**new_grid(t_context *gs);
+int				**new_grid(void);
 int				**copy_grid(t_context *gs);
 void			delete_grid(t_context *gs);
 void			collide_left(t_context *gs);
