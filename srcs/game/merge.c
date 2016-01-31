@@ -6,7 +6,7 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 12:07:57 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 16:41:30 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 20:48:30 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,24 +98,23 @@ void	merge_down(t_context *gs)
 {
 	int	x;
 	int	y;
-	int	flag;
 
-	flag = 0;
-	x = 1;
-	while (x < 4)
+	y = 0;
+	while (y < 4)
 	{
-		y = 0;
-		while (y < 4)
+		x = 3;
+		while (x > 0)
 		{
 			if (gs->grid[x][y] != 0 && gs->grid[x][y] == gs->grid[x - 1][y])
 			{
-				flag = 1;
 				gs->grid[x][y] += gs->grid[x - 1][y];
 				gs->points += gs->grid[x - 1][y];
 				gs->grid[x - 1][y] = 0;
+				x -= 2;
 			}
-			y++;
+			else
+				x -= 1;
 		}
-		x += 2;
+		y++;
 	}
 }
