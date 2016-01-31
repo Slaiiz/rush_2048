@@ -20,23 +20,22 @@
 ** @param int number			- The number to write in the given slot
 */
 
-static void	fill_slot(WINDOW *c, int slot, int number)
+void	fill_slot(WINDOW *c, int slot, int number)
 {
 	int		pos_x;
 	int		pos_y;
 	char	*s;
 
-	pos_y = WINB_Y / 4 * slot % 4 + WINB_Y / 8;
-	pos_x = WINB_X / 4 * slot % 4 + WINB_X / 8;
+	pos_y = WINB_Y / 4 * slot / 4 + WINB_Y / 8;
+	pos_x = WINB_X / 4 * (slot % 4) + WINB_X / 8;
 	if (number != 0)
 	{
-		exit(0);
 		s = ft_itoa(number);
 		mvwaddstr(c, pos_y, pos_x - ft_strlen(s) / 2, s);
 		free(s);
 	}
 	else
-		mvwhline(c, pos_y, pos_x - WINB_X / 8 + 1, ' ', WINB_X / 4 - 1);
+		mvwhline(c, pos_y, pos_x - WINB_X / 8 + 2, ' ', WINB_X / 4 - 1);
 }
 
 /*

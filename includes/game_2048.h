@@ -81,6 +81,7 @@ void			update_grid(t_context *gamestate);
 void			step_game(t_context *gamestate, int key);
 int				setup_windows(t_context *gamestate);
 void			update_score(t_context *gamestate);
+void			fill_slot(WINDOW *c, int slot, int number);
 
 int				**new_grid(t_context *gs);
 int				**copy_grid(t_context *gs);

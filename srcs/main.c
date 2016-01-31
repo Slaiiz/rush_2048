@@ -27,7 +27,6 @@ static void	resize_terminal(t_context *gamestate)
 	if (gamestate->is_running)
 	{
 		draw_grid(gamestate);
-		update_grid(gamestate);
 		update_score(gamestate);
 	}
 }
