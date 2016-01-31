@@ -6,7 +6,7 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 13:24:20 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 15:37:44 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 16:40:37 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ void	delete_grid(t_context *gs)
 	while (x < 16)
 		free(gs->grid[x++]);
 }
-
-/*
- * Creates a fresh 4x4 int grid
- */
 
 int		**copy_grid(int **grid)
 {

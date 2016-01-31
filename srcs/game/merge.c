@@ -6,17 +6,17 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 12:07:57 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 15:39:42 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 16:41:30 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
 /*
- * Merge functions, merge the tills with the same number
- * Notes: Must be followed by a collide function to replace
- * the tills at the edge
- */
+** Merge functions, merge the tills with the same number
+** Notes: Must be followed by a collide function to replace
+** the tills at the edge
+*/
 
 void	merge_left(t_context *gs)
 {

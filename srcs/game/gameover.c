@@ -6,18 +6,18 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 12:18:51 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 14:18:32 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 16:40:13 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
 /*
- * Checks if a till is mergable
- * Return values:
- * 0 : till cannot merge
- * 1 : till can merge
- */
+** Checks if a till is mergable
+** Return values:
+** 0 : till cannot merge
+** 1 : till can merge
+*/
 
 static int	till_touch(t_context *gs, int x, int y)
 {
@@ -38,11 +38,11 @@ static int	till_touch(t_context *gs, int x, int y)
 }
 
 /*
- * Return values:
- * 0 : continue
- * 1 : win
- * 2 : lose
- */
+** Return values:
+** 0 : continue
+** 1 : win
+** 2 : lose
+*/
 
 int			gameover(t_context *gs)
 {
