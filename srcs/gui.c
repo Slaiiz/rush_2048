@@ -12,8 +12,30 @@
 
 #include "game_2048.h"
 
+/*
+** Draw or update the game grid.
+** First iterate over the x axis, then the y axis.
+** Give up if the maximum size of a square isn't enough to fit in a digit.
+** @param WINDOW *c			- The concerned window handle
+*/
+
 void	draw_grid(WINDOW *c)
 {
+	int		size_x;
+	int		size_y;
+	int		i;
+
+	size_x = WINB_X / 4;
+	size_y = WINB_Y / 4;
+	if (size_x < 1 || size_x < 1)
+		return ;
+	i = 4;
+	while (i--)
+		mvwvline(c, 1, size_x * i + 1, '#', WINB_Y - 2);
+	i = 4;
+	while (i--)
+		mvwhline(c, size_y * i + 1, 1, '#', WINB_X - 2);
+	wrefresh(c);
 }
 
 /*
@@ -47,7 +69,7 @@ void	setup_text(WINDOW **windows)
 
 /*
 ** Draw each window in a way that will cover the entire screen.
-** Can be recalled further for updating.
+** Can be recalled further on for updating.
 ** @param WINDOW **windows	- An array of windows
 ** HACK:
 ** Line 56: refresh()
@@ -76,6 +98,7 @@ int		setup_windows(WINDOW **windows)
 		cbreak();
 		noecho();
 		curs_set(0);
+		draw_grid(windows[GAMEWINDOW]);
 		return (1);
 	}
 	return (0);

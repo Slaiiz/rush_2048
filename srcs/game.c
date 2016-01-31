@@ -48,7 +48,14 @@ void	step_game(t_context *gamestate, int key)
 			gamestate->is_running = 1;
 			mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
 			wrefresh(windows[HIGHSCORES]);
-			draw_grid(windows[GAMEWINDOW]);
+		}
+	}
+	else
+	{
+		if (key == KEY_RETURN)
+		{
+			gamestate->is_running = 0;
+			setup_text(windows);
 		}
 	}
 }
