@@ -6,7 +6,7 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 12:24:15 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 16:42:12 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 16:52:20 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		move_diff(int **before, int **after)
 int		move_left(t_context *gs)
 {
 	int	**tmp;
+	int	x;
 
 	tmp = copy_grid(gs->grid);
 	collide_left(gs);
@@ -54,12 +55,16 @@ int		move_left(t_context *gs)
 	collide_left(gs);
 	if (move_diff(tmp, gs->grid) == 1)
 		addnum(gs);
+	x = 0;
+	while (x < 16)
+		free(tmp[x++]);
 	return (gameover(gs));
 }
 
 int		move_right(t_context *gs)
 {
 	int	**tmp;
+	int	x;
 
 	tmp = copy_grid(gs->grid);
 	collide_right(gs);
@@ -67,12 +72,16 @@ int		move_right(t_context *gs)
 	collide_right(gs);
 	if (move_diff(tmp, gs->grid) == 1)
 		addnum(gs);
+	x = 0;
+	while (x < 16)
+		free(tmp[x++]);
 	return (gameover(gs));
 }
 
 int		move_top(t_context *gs)
 {
 	int	**tmp;
+	int	x;
 
 	tmp = copy_grid(gs->grid);
 	collide_top(gs);
@@ -80,12 +89,16 @@ int		move_top(t_context *gs)
 	collide_top(gs);
 	if (move_diff(tmp, gs->grid) == 1)
 		addnum(gs);
+	x = 0;
+	while (x < 16)
+		free(tmp[x++]);
 	return (gameover(gs));
 }
 
 int		move_down(t_context *gs)
 {
 	int	**tmp;
+	int	x;
 
 	tmp = copy_grid(gs->grid);
 	collide_down(gs);
@@ -93,5 +106,8 @@ int		move_down(t_context *gs)
 	collide_down(gs);
 	if (move_diff(tmp, gs->grid) == 1)
 		addnum(gs);
+	x = 0;
+	while (x < 16)
+		free(tmp[x++]);
 	return (gameover(gs));
 }
