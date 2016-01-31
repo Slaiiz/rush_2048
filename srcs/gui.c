@@ -13,7 +13,20 @@
 #include "game_2048.h"
 
 /*
-** Draw or update the game grid.
+** Fill a slot in the grid contained in the given window with a number.
+** The color of that slot will change in consequence.
+** @param WINDOW *c			- The concerned window handle
+** @param int slot			- A number designating a slot, 0 <= x < 16
+** @param int number		- The number to write in the given slot
+*/
+
+//void	fill_slot(WINDOW *c, int slot, int number)
+//{
+//
+//}
+
+/*
+** Draw or update the game's 4x4 grid.
 ** First iterate over the x axis, then the y axis.
 ** Give up if the maximum size of a square isn't enough to fit in a digit.
 ** @param WINDOW *c			- The concerned window handle
@@ -56,7 +69,7 @@ void	setup_text(WINDOW **windows)
 	wmove(window, 4, 1);
 	while (repeat--)
 		waddch(window, '=');
-	s = "highscores";
+	s = "highscores:";
 	mvwaddstr(window, 6, CENTER(WINA_X, ft_strlen(s)), s);
 	s = "Press ENTER to start the game";
 	mvwaddstr(window, WINA_Y - 2, CENTER(WINA_X, ft_strlen(s)), s);
