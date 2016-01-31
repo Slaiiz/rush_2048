@@ -38,11 +38,17 @@ void	update_score(WINDOW *c, int points)
 
 void	step_game(t_context *gamestate, int key)
 {
+	WINDOW	**windows;
+
+	windows = gamestate->windows;
 	if (!gamestate->is_running)
 	{
-		if (key == KEY_ENTER)
+		if (key == KEY_RETURN)
 		{
 			gamestate->is_running = 1;
+			mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
+			wrefresh(windows[HIGHSCORES]);
+			draw_grid(windows[GAMEWINDOW]);
 		}
 	}
 }

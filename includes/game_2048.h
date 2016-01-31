@@ -23,7 +23,8 @@
 ** Manual makes no mention of this key that I know.
 */
 
-# define KEY_ESC	27
+# define KEY_ESCAPE	27
+# define KEY_RETURN	10
 
 /*
 ** Highscores window's proportional scale

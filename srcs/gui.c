@@ -12,6 +12,10 @@
 
 #include "game_2048.h"
 
+void	draw_grid(WINDOW *c)
+{
+}
+
 /*
 ** Write all the fancy text on your surfaces.
 ** @param WINDOW **windows	- An array of windows
@@ -36,9 +40,9 @@ void	setup_text(WINDOW **windows)
 	mvwaddstr(window, WINA_Y - 2, CENTER(WINA_X, ft_strlen(s)), s);
 	update_score(windows[SCORE], 0);
 	wnoutrefresh(window);
+	wnoutrefresh(windows[GAMEWINDOW]);
 	wnoutrefresh(windows[SCORE]);
 	doupdate();
-	return ;
 }
 
 /*
@@ -71,6 +75,7 @@ int		setup_windows(WINDOW **windows)
 		keypad(windows[STDSCR], 1);
 		cbreak();
 		noecho();
+		curs_set(0);
 		return (1);
 	}
 	return (0);

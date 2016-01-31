@@ -34,7 +34,7 @@ int			main(void)
 			{
 				if (key == KEY_RESIZE)
 					setup_windows(gamestate->windows);
-				else if (key == KEY_ESC)
+				else if (key == KEY_ESCAPE)
 					break ;
 				else
 					step_game(gamestate, key);
