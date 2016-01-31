@@ -6,7 +6,7 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 14:01:54 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 18:11:40 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 18:15:37 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int			save_score(char *player, int score)
 				free(line);
 				free(tmp_score);
 				line = tmp;
-				if ((fd = open("score.txt", O_CREAT | O_RDWR | O_APPEND, 0777)) != -1)
+				if ((fd = open("score.txt", O_CREAT | O_RDWR | O_APPEND, 0777))
+						!= -1)
 				{
 					ret += write(fd, line, ft_strlen(line));
 					ret += write(fd, "\n", 1);
