@@ -76,13 +76,14 @@ typedef struct	s_context
 	int			**grid;
 }				t_context;
 
-void			draw_grid(WINDOW *c);
-void			fill_slot(WINDOW *c, int slot, int number);
+void			draw_grid(t_context *gamestate);
+void			update_grid(t_context *gamestate);
 void			step_game(t_context *gamestate, int key);
-int				setup_windows(WINDOW **windows);
+int				setup_windows(t_context *gamestate);
+void			update_score(t_context *gamestate);
 
-int				**new_grid(void);
-int				**copy_grid(int **grid);
+int				**new_grid(t_context *gs);
+int				**copy_grid(t_context *gs);
 void			delete_grid(t_context *gs);
 void			collide_left(t_context *gs);
 void			collide_right(t_context *gs);

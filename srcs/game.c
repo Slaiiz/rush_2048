@@ -12,11 +12,6 @@
 
 #include "game_2048.h"
 
-//static void	update_grid(t_context *gamestate)
-//{
-//
-//}
-
 static int	get_input(t_context *gamestate, int key)
 {
 	int		condition;
@@ -36,11 +31,10 @@ static int	get_input(t_context *gamestate, int key)
 
 /*
 ** Update the score window with the new amount of points.
-** @param WINDOW *c				- The concerned window handle
-** @param int points			- Number to be displayed
+** @param t_context *gamestate	- The current state of the game
 */
 
-static void	update_score(t_context *gamestate, int points)
+void		update_score(t_context *gamestate)
 {
 	WINDOW	*window;
 	char	*s;
@@ -48,7 +42,7 @@ static void	update_score(t_context *gamestate, int points)
 	window = gamestate->windows[SCORE];
 	s = "Points:";
 	mvwaddstr(window, CENTER(WINC_Y, 1), 2, s);
-	s = ft_itoa(points);
+	s = ft_itoa(gamestate->points);
 	mvwaddstr(window, CENTER(WINC_Y, 1), WINC_X - ft_strlen(s) - 2, s);
 	wrefresh(window);
 	free(s);
@@ -73,19 +67,16 @@ void		step_game(t_context *gamestate, int key)
 			gamestate->is_running = 1;
 			mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
 			wrefresh(windows[HIGHSCORES]);
-			update_score(gamestate, 0);
-			draw_grid(windows[GAMEWINDOW]);
-			gamestate->grid = new_grid();
-			addnum(gamestate);
-			addnum(gamestate);
-			fill_slot(windows[GAMEWINDOW], 0, 32);
+			update_score(gamestate);
+			new_grid(gamestate);
+			draw_grid(gamestate);
 		}
 	}
 	else
 	{
 		if ((condition = get_input(gamestate, key)) != -1)
 		{
-//			update_grid(gamestate);
+			update_grid(gamestate);
 			if (condition != 0)
 				gamestate->is_running = 0;
 		}

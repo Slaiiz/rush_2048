@@ -21,20 +21,22 @@ void	delete_grid(t_context *gs)
 		free(gs->grid[x++]);
 }
 
-int		**copy_grid(int **grid)
+int		**copy_grid(t_context *gs)
 {
+	int	**original;
 	int	**copy;
 	int	x;
 	int	y;
 
-	copy = new_grid();
+	original = gs->grid;
+	copy = new_grid(gs);
 	x = 0;
 	while (x < 4)
 	{
 		y = 0;
 		while (y < 4)
 		{
-			copy[x][y] = grid[x][y];
+			copy[x][y] = original[x][y];
 			y++;
 		}
 		x++;
@@ -42,7 +44,7 @@ int		**copy_grid(int **grid)
 	return (copy);
 }
 
-int		**new_grid(void)
+int		**new_grid(t_context *gs)
 {
 	int	**grid;
 	int	x;
@@ -60,5 +62,8 @@ int		**new_grid(void)
 			grid[x][y++] = 0;
 		x++;
 	}
+	gs->grid = grid;
+	addnum(gs);
+	addnum(gs);
 	return (grid);
 }

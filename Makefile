@@ -2,7 +2,7 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME	= game_2048
 SRCS	= main.c gui.c game.c\
-		  game/addnum.c game/collide.c game/gameover.c game/gamestate.c game/grid.c game/merge.c game/move.c
+		  game/addnum.c game/collide.c game/gameover.c game/grid.c game/merge.c game/move.c
 
 help:
 	@echo "\033[33;41mAvailable rules:\033[0m\n\

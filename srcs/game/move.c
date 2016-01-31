@@ -49,7 +49,7 @@ int		move_left(t_context *gs)
 	int	**tmp;
 	int	x;
 
-	tmp = copy_grid(gs->grid);
+	tmp = copy_grid(gs);
 	collide_left(gs);
 	merge_left(gs);
 	collide_left(gs);
@@ -66,7 +66,7 @@ int		move_right(t_context *gs)
 	int	**tmp;
 	int	x;
 
-	tmp = copy_grid(gs->grid);
+	tmp = copy_grid(gs);
 	collide_right(gs);
 	merge_right(gs);
 	collide_right(gs);
@@ -83,7 +83,7 @@ int		move_up(t_context *gs)
 	int	**tmp;
 	int	x;
 
-	tmp = copy_grid(gs->grid);
+	tmp = copy_grid(gs);
 	collide_up(gs);
 	merge_up(gs);
 	collide_up(gs);
@@ -100,7 +100,7 @@ int		move_down(t_context *gs)
 	int	**tmp;
 	int	x;
 
-	tmp = copy_grid(gs->grid);
+	tmp = copy_grid(gs);
 	collide_down(gs);
 	merge_down(gs);
 	collide_down(gs);

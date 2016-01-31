@@ -21,6 +21,17 @@
 ** to do stuff with it.
 */
 
+static void	resize_terminal(t_context *gamestate)
+{
+	setup_windows(gamestate);
+	if (gamestate->is_running)
+	{
+		draw_grid(gamestate);
+		update_grid(gamestate);
+		update_score(gamestate);
+	}
+}
+
 int			main(void)
 {
 	t_context	*gamestate;
@@ -28,16 +39,12 @@ int			main(void)
 
 	if ((gamestate = ft_memalloc(sizeof(t_context))))
 	{
-		if (setup_windows(gamestate->windows))
+		if (setup_windows(gamestate))
 		{
 			while ((key = getch()))
 			{
 				if (key == KEY_RESIZE)
-				{
-					setup_windows(gamestate->windows);
-					if (gamestate->is_running)
-						draw_grid(gamestate->windows[GAMEWINDOW]);
-				}
+					resize_terminal(gamestate);
 				else if (key == KEY_ESCAPE)
 					break ;
 				else
