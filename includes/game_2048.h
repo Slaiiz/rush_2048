@@ -72,11 +72,12 @@ typedef struct	s_context
 {
 	int			is_running;
 	int			points;
-	WINDOW		*windows[3];
+	WINDOW		*windows[4];
 	int			**grid;
 }				t_context;
 
 void			draw_grid(WINDOW *c);
+void			fill_slot(WINDOW *c, int slot, int number);
 void			step_game(t_context *gamestate, int key);
 int				setup_windows(WINDOW **windows);
 
@@ -85,16 +86,16 @@ int				**copy_grid(int **grid);
 void			delete_grid(t_context *gs);
 void			collide_left(t_context *gs);
 void			collide_right(t_context *gs);
-void			collide_top(t_context *gs);
+void			collide_up(t_context *gs);
 void			collide_down(t_context *gs);
 void			merge_left(t_context *gs);
 void			merge_right(t_context *gs);
-void			merge_top(t_context *gs);
+void			merge_up(t_context *gs);
 void			merge_down(t_context *gs);
 int				move_diff(int **before, int **after);
 int				move_left(t_context *gs);
 int				move_right(t_context *gs);
-int				move_top(t_context *gs);
+int				move_up(t_context *gs);
 int				move_down(t_context *gs);
 int				gameover(t_context *gs);
 void			addnum(t_context *gs);

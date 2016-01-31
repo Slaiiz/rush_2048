@@ -70,14 +70,14 @@ int		move_right(t_context *gs)
 	return (gameover(gs));
 }
 
-int		move_top(t_context *gs)
+int		move_up(t_context *gs)
 {
 	int	**tmp;
 
 	tmp = copy_grid(gs->grid);
-	collide_top(gs);
-	merge_top(gs);
-	collide_top(gs);
+	collide_up(gs);
+	merge_up(gs);
+	collide_up(gs);
 	if (move_diff(tmp, gs->grid) == 1)
 		addnum(gs);
 	return (gameover(gs));

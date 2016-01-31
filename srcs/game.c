@@ -12,24 +12,26 @@
 
 #include "game_2048.h"
 
-static void	update_grid(t_context *gamestate)
-{
+//static void	update_grid(t_context *gamestate)
+//{
+//
+//}
 
-}
-
-static void	get_input (t_context *gamestate, int key)
+static int	get_input(t_context *gamestate, int key)
 {
+	int		condition;
+
 	if (key == KEY_LEFT)
-		condition = move_left();
+		condition = move_left(gamestate);
 	else if (key == KEY_UP)
-		condition = move_up();
+		condition = move_up(gamestate);
 	else if (key == KEY_RIGHT)
-		condition = move_right();
+		condition = move_right(gamestate);
 	else if (key == KEY_DOWN)
-		condition = move_down();
+		condition = move_down(gamestate);
 	else
-		return (0);
-	return (1);
+		return (-1);
+	return (condition);
 }
 
 /*
@@ -72,18 +74,19 @@ void		step_game(t_context *gamestate, int key)
 			mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
 			wrefresh(windows[HIGHSCORES]);
 			update_score(gamestate, 0);
-			draw_grid(gamestate);
+			draw_grid(windows[GAMEWINDOW]);
 			gamestate->grid = new_grid();
 			addnum(gamestate);
 			addnum(gamestate);
+			fill_slot(windows[GAMEWINDOW], 0, 32);
 		}
 	}
 	else
 	{
-		if (get_input(gamestate, key))
+		if ((condition = get_input(gamestate, key)) != -1)
 		{
-			update_grid(gamestate)
-			if (conditon != 0)
+//			update_grid(gamestate);
+			if (condition != 0)
 				gamestate->is_running = 0;
 		}
 	}

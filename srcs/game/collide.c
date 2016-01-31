@@ -73,7 +73,7 @@ void	collide_right(t_context *gs)
 	}
 }
 
-void	collide_top(t_context *gs)
+void	collide_up(t_context *gs)
 {
 	int	x;
 	int	y;

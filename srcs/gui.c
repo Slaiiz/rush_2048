@@ -20,14 +20,17 @@
 ** @param int number		- The number to write in the given slot
 */
 
-void	fill_slot(t_context *gamestate, int slot, int number)
+void	fill_slot(WINDOW *c, int slot, int number)
 {
-	WINDOW	*window;
+	int		pos_x;
+	int		pos_y;
 	char	*s;
 
-	window = gamestate->windows[GAMEWINDOW];
 	s = ft_itoa(number);
-	wmove(window, WINB_Y * slot)
+	pos_x = WINB_X * (slot % 4) + WINB_X / 2;
+	pos_y = WINB_Y * (slot / 4) + WINB_Y / 2;
+	mvwaddch(c, pos_y, pos_x, 'x');
+	free(s);
 }
 
 /*

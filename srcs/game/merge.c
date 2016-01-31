@@ -22,7 +22,6 @@ void	merge_left(t_context *gs)
 {
 	int	x;
 	int	y;
-	int	val;
 
 	x = 0;
 	while (x < 4)
@@ -48,7 +47,6 @@ void	merge_right(t_context *gs)
 {
 	int	x;
 	int	y;
-	int	val;
 
 	x = 0;
 	while (x < 4)
@@ -70,11 +68,10 @@ void	merge_right(t_context *gs)
 	}
 }
 
-void	merge_top(t_context *gs)
+void	merge_up(t_context *gs)
 {
 	int	x;
 	int	y;
-	int	val;
 	int	flag;
 
 	flag = 0;
@@ -101,7 +98,6 @@ void	merge_down(t_context *gs)
 {
 	int	x;
 	int	y;
-	int	val;
 	int	flag;
 
 	flag = 0;
