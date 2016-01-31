@@ -65,7 +65,6 @@ typedef struct	s_context
 	WINDOW		*windows[3];
 }				t_context;
 
-
 void	step_game(t_context *gamestate, int key);
 void	update_score(WINDOW *c, int points);
 void	setup_text(WINDOW **windows);
