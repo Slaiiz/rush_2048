@@ -12,6 +12,21 @@
 
 #include "game_2048.h"
 
+static void	new_game(t_context *gamestate)
+{
+	WINDOW	**windows;
+
+	windows = gamestate->windows;
+	gamestate->is_running = 1;
+	mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
+	wrefresh(windows[HIGHSCORES]);
+	update_score(gamestate);
+	gamestate->grid = new_grid();
+	addnum(gamestate);
+	addnum(gamestate);
+	draw_grid(gamestate);
+}
+
 static int	get_input(t_context *gamestate, int key)
 {
 	int		condition;
@@ -56,23 +71,12 @@ void		update_score(t_context *gamestate)
 
 void		step_game(t_context *gamestate, int key)
 {
-	WINDOW	**windows;
 	int		condition;
 
-	windows = gamestate->windows;
 	if (!gamestate->is_running)
 	{
 		if (key == KEY_RETURN)
-		{
-			gamestate->is_running = 1;
-			mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
-			wrefresh(windows[HIGHSCORES]);
-			update_score(gamestate);
-			gamestate->grid = new_grid();
-			addnum(gamestate);
-			addnum(gamestate);
-			draw_grid(gamestate);
-		}
+			new_game(gamestate);
 	}
 	else
 	{

@@ -20,7 +20,7 @@
 ** @param int number			- The number to write in the given slot
 */
 
-void	fill_slot(WINDOW *c, int slot, int number)
+void		fill_slot(WINDOW *c, int slot, int number)
 {
 	int		pos_x;
 	int		pos_y;
