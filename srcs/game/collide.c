@@ -6,16 +6,16 @@
 /*   By: rludosan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 12:07:41 by rludosan          #+#    #+#             */
-/*   Updated: 2016/01/31 14:25:05 by rludosan         ###   ########.fr       */
+/*   Updated: 2016/01/31 16:43:02 by rludosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
 /*
- * All the collide functions slide the tills to one edge
- * Notes: It does not merge them, check sum functions for that
- */
+** All the collide functions slide the tills to one edge
+** Notes: It does not merge them, check sum functions for that
+*/
 
 void	collide_left(t_context *gs)
 {
