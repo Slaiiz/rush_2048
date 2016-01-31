@@ -70,10 +70,10 @@ void		step_game(t_context *gamestate, int key)
 			update_score(gamestate);
 			new_grid(gamestate);
 			draw_grid(gamestate);
-			fill_slot(gamestate->windows[GAMEWINDOW], 1, 1);
-//			fill_slot(gamestate->windows[GAMEWINDOW], 1, 1);
-//			fill_slot(gamestate->windows[GAMEWINDOW], 10, 1);
-//			fill_slot(gamestate->windows[GAMEWINDOW], 16, 1);
+			fill_slot(gamestate->windows[GAMEWINDOW], 0, 1);
+			fill_slot(gamestate->windows[GAMEWINDOW], 5, 1);
+			fill_slot(gamestate->windows[GAMEWINDOW], 10, 1);
+			fill_slot(gamestate->windows[GAMEWINDOW], 16, 1);
 		}
 	}
 	else

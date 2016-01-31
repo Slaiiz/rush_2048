@@ -26,7 +26,7 @@ void	fill_slot(WINDOW *c, int slot, int number)
 	int		pos_y;
 	char	*s;
 
-	pos_y = WINB_Y / 4 * slot / 4 + WINB_Y / 8;
+	pos_y = WINB_Y / 4 * (slot / 4) + WINB_Y / 8;
 	pos_x = WINB_X / 4 * (slot % 4) + WINB_X / 8;
 	if (number != 0)
 	{
