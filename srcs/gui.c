@@ -56,7 +56,7 @@ void		update_grid(t_context *gamestate)
 	while (y < 4)
 	{
 		x = 0;
-		while (x < 0)
+		while (x < 4)
 		{
 			fill_slot(window, y * 4 + x, grid[y][x]);
 			x++;

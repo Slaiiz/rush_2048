@@ -25,6 +25,10 @@ static void	new_game(t_context *gamestate)
 	addnum(gamestate);
 	addnum(gamestate);
 	draw_grid(gamestate);
+	fill_slot(gamestate->windows[GAMEWINDOW], 0, 32);
+	fill_slot(gamestate->windows[GAMEWINDOW], 5, 32);
+	fill_slot(gamestate->windows[GAMEWINDOW], 10, 32);
+	fill_slot(gamestate->windows[GAMEWINDOW], 15, 32);
 }
 
 static int	get_input(t_context *gamestate, int key)
