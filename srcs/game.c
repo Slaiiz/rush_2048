@@ -17,7 +17,7 @@ static void	new_game(t_context *gamestate)
 	WINDOW	**windows;
 
 	windows = gamestate->windows;
-	if (ft_bitscan(WIN_VALUE) != 1)
+	if (ft_bitscan(WIN_VALUE) != 1 || WIN_VALUE == 1)
 	{
 		mvwaddstr(windows[SCORE], CENTER(WINC_Y, 1), 2, "I AIN'T RUNNIN' THAT");
 		wrefresh(windows[SCORE]);
@@ -92,10 +92,11 @@ void		step_game(t_context *gamestate, int key)
 		{
 			update_grid(gamestate);
 			update_score(gamestate);
-			if (condition != 0)
+			if (condition == 1)
 			{
 				window = gamestate->windows[HIGHSCORES];
-				mvwaddstr(window, 8, 2, "Ye lost LOSAR!");
+				mvwaddstr(window, 8, 2, "U R TEH WINRARZ!!");
+				wrefresh(window);
 				gamestate->is_running = 0;
 				free(gamestate->grid);
 			}

@@ -57,7 +57,7 @@ int			gameover(t_context *gs)
 		y = 0;
 		while (y < 4)
 		{
-			if (gs->grid[x][y] == WIN_VALUE)
+			if (gs->grid[x][y] >= WIN_VALUE)
 				return (1);
 			if (till_touch(gs, x, y) == 0)
 				err++;
