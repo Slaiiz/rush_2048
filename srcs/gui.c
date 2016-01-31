@@ -25,7 +25,7 @@ void	setup_text(WINDOW **windows)
 
 	window = windows[HIGHSCORES];
 	s = "~ 2048 ~";
-	mvwaddstr(window, 2, 2, s);
+	mvwaddstr(window, 2, CENTER(WINA_X, ft_strlen(s)), s);
 	repeat = WINA_X - 2;
 	wmove(window, 4, 1);
 	while (repeat--)
@@ -35,6 +35,9 @@ void	setup_text(WINDOW **windows)
 	s = "Press ENTER to start the game";
 	mvwaddstr(window, WINA_Y - 2, CENTER(WINA_X, ft_strlen(s)), s);
 	update_score(windows[SCORE], 0);
+	wnoutrefresh(window);
+	wnoutrefresh(windows[SCORE]);
+	doupdate();
 	return ;
 }
 
@@ -57,15 +60,12 @@ int		setup_windows(WINDOW **windows)
 		getmaxyx(windows[STDSCR], LINES, COLS);
 		window = newwin(WINA_Y, WINA_X, 0, 0);
 		wborder(window, '|', '|', '-', '-', '+', '+', '+', '+');
-		wrefresh(window);
 		windows[HIGHSCORES] = window;
 		window = newwin(WINB_Y, WINB_X, 0, WINA_X);
 		wborder(window, '|', '|', '-', '-', '+', '+', '+', '+');
-		wrefresh(window);
 		windows[GAMEWINDOW] = window;
 		window = newwin(WINC_Y, WINC_X, WINA_Y, 0);
 		wborder(window, '|', '|', '-', '-', '+', '+', '+', '+');
-		wrefresh(window);
 		windows[SCORE] = window;
 		setup_text(windows);
 		keypad(windows[STDSCR], 1);
