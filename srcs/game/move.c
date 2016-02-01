@@ -54,7 +54,7 @@ int		move_left(t_context *gs)
 	merge_left(gs);
 	collide_left(gs);
 	if (move_diff(tmp, gs->grid) == 1)
-		addnum(gs);
+		add_number(gs);
 	x = 0;
 	while (x < 16)
 		free(tmp[x++]);
@@ -71,7 +71,7 @@ int		move_right(t_context *gs)
 	merge_right(gs);
 	collide_right(gs);
 	if (move_diff(tmp, gs->grid) == 1)
-		addnum(gs);
+		add_number(gs);
 	x = 0;
 	while (x < 16)
 		free(tmp[x++]);
@@ -88,7 +88,7 @@ int		move_up(t_context *gs)
 	merge_up(gs);
 	collide_up(gs);
 	if (move_diff(tmp, gs->grid) == 1)
-		addnum(gs);
+		add_number(gs);
 	x = 0;
 	while (x < 16)
 		free(tmp[x++]);
@@ -105,7 +105,7 @@ int		move_down(t_context *gs)
 	merge_down(gs);
 	collide_down(gs);
 	if (move_diff(tmp, gs->grid) == 1)
-		addnum(gs);
+		add_number(gs);
 	x = 0;
 	while (x < 16)
 		free(tmp[x++]);

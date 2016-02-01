@@ -29,8 +29,8 @@ static void	new_game(t_context *gamestate)
 	wrefresh(windows[HIGHSCORES]);
 	update_score(gamestate);
 	gamestate->grid = new_grid();
-	addnum(gamestate);
-	addnum(gamestate);
+	add_number(gamestate);
+	add_number(gamestate);
 	draw_grid(gamestate);
 }
 

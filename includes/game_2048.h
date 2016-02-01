@@ -15,6 +15,7 @@
 
 # include <ncurses.h>
 # include <menu.h>
+# include <time.h>
 # include "libft.h"
 
 # define CENTER(size, length)	(size - length) / 2
@@ -53,7 +54,7 @@
 
 enum	e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 64
 };
 
 /*
@@ -100,6 +101,6 @@ int				move_right(t_context *gs);
 int				move_up(t_context *gs);
 int				move_down(t_context *gs);
 int				gameover(t_context *gs);
-void			addnum(t_context *gs);
+void			add_number(t_context *gs);
 
 #endif
