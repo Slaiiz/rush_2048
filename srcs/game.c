@@ -12,28 +12,6 @@
 
 #include "game_2048.h"
 
-static void	new_game(t_context *gamestate)
-{
-	WINDOW	**windows;
-
-	windows = gamestate->windows;
-	if (ft_bitscan(WIN_VALUE) != 1 || WIN_VALUE == 1)
-	{
-		mvwaddstr(windows[SCORE], CENTER(WINC_Y, 1), 2, "I AIN'T RUNNIN' THAT");
-		wrefresh(windows[SCORE]);
-		gamestate->is_running = 0;
-		return ;
-	}
-	gamestate->is_running = 1;
-	mvwhline(windows[HIGHSCORES], WINA_Y - 2, 1, ' ', WINA_X - 2);
-	wrefresh(windows[HIGHSCORES]);
-	update_score(gamestate);
-	gamestate->grid = new_grid();
-	add_number(gamestate);
-	add_number(gamestate);
-	draw_grid(gamestate);
-}
-
 static int	get_input(t_context *gamestate, int key)
 {
 	int		condition;

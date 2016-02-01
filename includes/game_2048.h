@@ -48,12 +48,20 @@
 # define WINC_X	(COLS / 10 * 3)
 # define WINC_Y	(LINES / 10 * 1 + LINES % 10)
 
+# define RIGHT	2
+# define LEFT	0
+# define DOWN	4
+# define UP		1
+
 /*
 ** WIN_VALUE: Victory condition
 */
 
 enum	e_const
 {
+	WIN = 1
+	LOSE = 2
+	CONTINUE = 0
 	WIN_VALUE = 64
 };
 
@@ -63,44 +71,44 @@ enum	e_const
 
 enum	e_display
 {
-	STDSCR = 0,
 	HIGHSCORES = 1,
 	GAMEWINDOW = 2,
+	STDSCR = 0,
 	SCORE = 3
 };
 
 typedef struct	s_context
 {
-	int			is_running;
-	int			points;
 	WINDOW		*windows[4];
-	int			**grid;
+	int			isrunning;
+	int			points;
+	int			*grid;
 }				t_context;
 
-void			draw_grid(t_context *gamestate);
-void			update_grid(t_context *gamestate);
+void			fill_slot(WINDOW *c, int slot, int number);
 void			step_game(t_context *gamestate, int key);
 int				setup_windows(t_context *gamestate);
 void			update_score(t_context *gamestate);
-void			fill_slot(WINDOW *c, int slot, int number);
+void			update_grid(t_context *gamestate);
+void			draw_grid(t_context *gamestate);
 
-int				**new_grid(void);
-int				**copy_grid(t_context *gs);
-void			delete_grid(t_context *gs);
-void			collide_left(t_context *gs);
-void			collide_right(t_context *gs);
-void			collide_up(t_context *gs);
-void			collide_down(t_context *gs);
-void			merge_left(t_context *gs);
-void			merge_right(t_context *gs);
-void			merge_up(t_context *gs);
-void			merge_down(t_context *gs);
-int				move_diff(int **before, int **after);
-int				move_left(t_context *gs);
-int				move_right(t_context *gs);
-int				move_up(t_context *gs);
-int				move_down(t_context *gs);
-int				gameover(t_context *gs);
-void			add_number(t_context *gs);
+// int				**new_grid(void);
+// int				**copy_grid(t_context *gs);
+// void			delete_grid(t_context *gs);
+// void			collide_left(t_context *gs);
+// void			collide_right(t_context *gs);
+// void			collide_up(t_context *gs);
+// void			collide_down(t_context *gs);
+// void			merge_left(t_context *gs);
+// void			merge_right(t_context *gs);
+// void			merge_up(t_context *gs);
+// void			merge_down(t_context *gs);
+// int				move_diff(int **before, int **after);
+// int				move_left(t_context *gs);
+// int				move_right(t_context *gs);
+// int				move_up(t_context *gs);
+// int				move_down(t_context *gs);
+// int				gameover(t_context *gs);
+// void			add_number(t_context *gs);
 
 #endif
