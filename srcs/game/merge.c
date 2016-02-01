@@ -72,9 +72,7 @@ void	merge_up(t_context *gs)
 {
 	int	x;
 	int	y;
-	int	flag;
 
-	flag = 0;
 	x = 0;
 	while (x < 3)
 	{
@@ -83,7 +81,6 @@ void	merge_up(t_context *gs)
 		{
 			if (gs->grid[x][y] != 0 && gs->grid[x][y] == gs->grid[x + 1][y])
 			{
-				flag = 1;
 				gs->grid[x][y] += gs->grid[x + 1][y];
 				gs->points += gs->grid[x + 1][y];
 				gs->grid[x + 1][y] = 0;
